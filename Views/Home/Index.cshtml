@@ -1,0 +1,419 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- Showcase -->
+    <section class="bg-dark text-light p-5 text-center text-md-start" style="border-bottom: 3px solid black;">
+        <div class="container">
+            <div class="d-md-flex align-items-center justify-content-between">
+                <div>
+                    <h1>
+                        Welcome, Adventurer!
+                    </h1>
+                    <p class="my-4">
+                        The Dungeons &amp; Dragons Character Management System (CMS) is your one-stop shop for all your D&amp;D Character needs!
+                        Here you can create characters for your next campaign, edit characters you have made before, or view characters other users have made.
+                    </p>
+                    <a class="btn btn-primary btn-lg btn-danger" asp-controller="Character" asp-action="Create">Create a Character</a>
+                </div>
+                <img class="w-50" src="images/party.svg" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Character Card -->
+    <section class="p-5 bg-danger" style="border-bottom: 3px solid #333;" id="characters">
+        <div class="container">
+            <h2 class="text-center text-white">See Important Stats With Just a Glance</h2>
+            <p class="lead text-center mb-5 text-white">Check these bad boys out!</p>
+            <div class="row g-4 justify-content-center">
+
+                <div class="col-md-8 col-lg-4 selection">
+                    <div class="card characterCard h-100">
+                        <div class="p-4">
+                            <div class="d-flex gap-4">
+                                <div class="">
+                                    <img src="~/images/exampleOne.JPG" alt="user" class="border border-3 border-dark rounded-circle" width="100" height="100" />
+                                    <div class="numberCircle float-right">
+                                        17
+                                    </div>
+                                </div>
+                                <div class="pl-5">
+                                    <h3><b><i>Ser Pond</i></b></h3>
+                                    <div class="d-flex ">
+                                        <h4 class="mx-lg-1">Human</h4>
+                                        <h4 class="mx-lg-1 text-danger"> &bull; </h4>
+                                        <h4 class="mx-lg-1">Fighter</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="d-flex justify-content-around">
+                                            <img width="40" src="images/strengthIcon.svg" title="Strength Stat" />
+                                            <h2 class="font-light">18</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-around">
+                                            <img width="40" src="images/dexterityIcon.svg" title="Dexterity Stat" />
+                                            <h2 class="font-light">16</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-around">
+                                            <img width="40" src="images/constitutionIcon.svg" title="Constitution Stat" />
+                                            <h2 class="font-light">14</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-around">
+                                            <img width="40" src="images/intelligenceIcon.svg" title="Intelligence Stat" />
+                                            <h2 class="font-light">12</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-around">
+                                            <img width="40" src="images/wisdomIcon.svg" title="Wisdom Stat" />
+                                            <h2 class="font-light">10</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-around">
+                                            <img width="40" src="~/images/charismaIcon.svg" title="Charisma Stat" />
+                                            <h2 class="font-light">14</h2>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-8">
+                                        <div class="d-flex justify-content-around">
+                                            <div class="border border-3 border-danger rounded text-center p-1 stats">
+                                                <h1>3</h1>
+                                                <h6 class="text-danger">Initiative</h6>
+                                            </div>
+                                            <div class="border border-3 border-danger rounded text-center p-1 stats">
+                                                <h1>146</h1>
+                                                <h6 class="text-danger">Hit Points</h6>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-around  mt-2">
+                                            <div class="border border-3 border-danger rounded text-center p-1 stats">
+                                                <h1>17</h1>
+                                                <h6 class="text-danger">AC</h6>
+                                            </div>
+                                            <div class="border border-3 border-danger rounded text-center p-1 stats">
+                                                <h1>30</h1>
+                                                <h6 class="text-danger">Speed</h6>
+                                            </div>
+                                        </div>
+                                        <div class="mt-2">
+                                            <h5><u>Skills:</u></h5>
+                                            <h6>Animal Handling, History, Intimidation, Persuasion</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body desciption">
+                                <hr />
+                                <h5 class="font-medium">Description</h5>
+                                <p class="aboutscroll">
+                                    A faithful and pious warrior to the core, Ser Pond knows or cares of little outside of his religion.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8 col-lg-4 selection">
+                    <div class="card characterCard h-100">
+                        <div class="p-4">
+                            <div class="d-flex gap-4">
+                                <div class="">
+                                    <img src="images/exampleThree.JPG" alt="user" class="border border-3 border-dark rounded-circle" width="100" height="100" />
+                                    <div class="numberCircle float-right">
+                                        7
+                                    </div>
+                                </div>
+                                <div class="pl-5">
+                                    <h3><b><i>Toast</i></b></h3>
+                                    <div class="d-flex ">
+                                        <h4 class="mx-lg-1">Reborn</h4>
+                                        <h4 class="mx-lg-1 text-danger"> &bull; </h4>
+                                        <h4 class="mx-lg-1">Wizard</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="d-flex justify-content-around">
+                                            <img width="40" src="images/strengthIcon.svg" title="Strength Stat" />
+                                            <h2 class="font-light">11</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-around">
+                                            <img width="40" src="images/dexterityIcon.svg" title="Dexterity Stat" />
+                                            <h2 class="font-light">12</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-around">
+                                            <img width="40" src="images/constitutionIcon.svg" title="Constitution Stat" />
+                                            <h2 class="font-light">14</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-around">
+                                            <img width="40" src="images/intelligenceIcon.svg" title="Intelligence Stat" />
+                                            <h2 class="font-light">16</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-around">
+                                            <img width="40" src="images/wisdomIcon.svg" title="Wisdom Stat" />
+                                            <h2 class="font-light">16</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-around">
+                                            <img width="40" src="images/charismaIcon.svg" title="Charisma Stat" />
+                                            <h2 class="font-light">11</h2>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-8">
+                                        <div class="d-flex justify-content-around">
+                                            <div class="border border-3 border-danger rounded text-center p-1 stats">
+                                                <h1>1</h1>
+                                                <h6 class="text-danger">Initiative</h6>
+                                            </div>
+                                            <div class="border border-3 border-danger rounded text-center p-1 stats">
+                                                <h1>44</h1>
+                                                <h6 class="text-danger">Hit Points</h6>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-around  mt-2">
+                                            <div class="border border-3 border-danger rounded text-center p-1 stats">
+                                                <h1>11</h1>
+                                                <h6 class="text-danger">AC</h6>
+                                            </div>
+                                            <div class="border border-3 border-danger rounded text-center p-1 stats">
+                                                <h1>30</h1>
+                                                <h6 class="text-danger">Speed</h6>
+                                            </div>
+                                        </div>
+                                        <div class="mt-2">
+                                            <h5><u>Skills:</u></h5>
+                                            <h6>Arcana, History, Insight, Intimidation, Investigation, Perception, Persuasion</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body desciption">
+                                <hr />
+                                <h5 class="font-medium">Description</h5>
+                                <p class="aboutscroll">
+                                    An undead necromancer who has roamed the world for almost two centuries seeking the reason for his mysterious revival.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-8 col-lg-4 selection">
+                    <div class="card characterCard h-100">
+                        <div class="p-4">
+                            <div class="d-flex gap-4">
+                                <div class="">
+                                    <img src="images/exampleTwo.JPG" alt="user" class="border border-3 border-dark rounded-circle" width="100" height="100" />
+                                    <div class="numberCircle float-right">
+                                        4
+                                    </div>
+                                </div>
+                                <div class="pl-5">
+                                    <h3><b><i>Cortés</i></b></h3>
+                                    <div class="d-flex ">
+                                        <h4 class="mx-lg-1">Tabaxi</h4>
+                                        <h4 class="mx-lg-1 text-danger"> &bull; </h4>
+                                        <h4 class="mx-lg-1">Fighter</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="d-flex justify-content-around">
+                                            <img width="40" src="images/strengthIcon.svg" title="Strength Stat" />
+                                            <h2 class="font-light">8</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-around">
+                                            <img width="40" src="images/dexterityIcon.svg" title="Dexterity Stat" />
+                                            <h2 class="font-light">19</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-around">
+                                            <img width="40" src="images/constitutionIcon.svg" title="Constitution Stat" />
+                                            <h2 class="font-light">14</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-around">
+                                            <img width="40" src="images/intelligenceIcon.svg" title="Intelligence Stat" />
+                                            <h2 class="font-light">11</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-around">
+                                            <img width="40" src="images/wisdomIcon.svg" title="Wisdom Stat" />
+                                            <h2 class="font-light">14</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-around">
+                                            <img width="40" src="images/charismaIcon.svg" title="Charisma Stat" />
+                                            <h2 class="font-light">12</h2>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-8">
+                                        <div class="d-flex justify-content-around">
+                                            <div class="border border-3 border-danger rounded text-center p-1 stats">
+                                                <h1>4</h1>
+                                                <h6 class="text-danger">Initiative</h6>
+                                            </div>
+                                            <div class="border border-3 border-danger rounded text-center p-1 stats">
+                                                <h1>36</h1>
+                                                <h6 class="text-danger">Hit Points</h6>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-around  mt-2">
+                                            <div class="border border-3 border-danger rounded text-center p-1 stats">
+                                                <h1>15</h1>
+                                                <h6 class="text-danger">AC</h6>
+                                            </div>
+                                            <div class="border border-3 border-danger rounded text-center p-1 stats">
+                                                <h1>30</h1>
+                                                <h6 class="text-danger">Speed</h6>
+                                            </div>
+                                        </div>
+                                        <div class="mt-2">
+                                            <h5><u>Skills:</u></h5>
+                                            <h6>Acrobatics, Stealth, Perception, Persuasion</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body desciption">
+                                <hr />
+                                <h5 class="font-medium">Description</h5>
+                                <p class="aboutscroll">
+                                    Originally from a distant land, Cortés has now sworn his service to the preservation and expansion of the glorious Dwendalian Empire.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Outline -->
+    <section id="outline" class="p-5" style="border-bottom: 3px solid black;">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md">
+                    <img class="img-fluid mx-auto d-none d-md-block float-right w-75" src="images/d20.png" />
+                </div>
+                <div class="col-md p-5">
+                    <h2 class="text-danger">Project Overview</h2>
+                    <p>
+                        This site is a Character Management System (CMS) for Dungeons and Dragons characters.
+                        It maintain a database of D&D characters (including monsters and NPCs) which keep track of basic stats about each character, and users can able to create, view, edit, and delete these characters.
+                    </p>
+                    <p>
+                        By default users can only view previously created characters by other registered users, but registering an account and logging in gives them access to make their own.
+                    </p>
+                    <a asp-controller="Home" asp-action="About" class="btn btn-danger mt-3"><i class="bi bi-chevron-right"></i>Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Used -->
+    <section id="tech" class="p-5 bg-dark text-light" style="border-bottom: 3px solid black;">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md p-5">
+                    <h2 class="text-danger">Technologies Used</h2>
+                    <p>
+                        The backend of this site is created using the ASP.NET MVC core framework in C#.
+                        The database uses SQL server and ADO.NET to connect the backend to the database.
+                    </p>
+                    <p>
+                        The frontend of this site uses the Bootstrap 5 and Jquery libraries.
+                        Much of the artwork was modified/created in Adobe Photoshop.
+                    </p>
+                    <a asp-controller="Home" asp-action="About" class="btn btn-danger mt-3"><i class="bi bi-chevron-right"></i>Learn More</a>
+                </div>
+                <div class="col-md">
+                    <img class="img-fluid mx-auto d-none d-md-block float-right w-50" src="images/d4(red).png" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Goal -->
+    <section id="goal" class="p-5 bg-danger text-light" style="border-bottom: 3px solid black;">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md">
+                    <img class="img-fluid mx-auto d-none d-md-block float-right w-50" src="images/d6.png" />
+                </div>
+                <div class="col-md p-5">
+                    <h2 class="" style="color:black">How Do I Use This Thing?</h2>
+                    <p>
+                        This site strives to be as intuitive as possible so that users never feel stuck or confused.
+                    </p>
+                    <p>
+                        That being said, if you do have any questions or can't seem to figure out how a feature works, try reading up on the site's user guide.
+                    </p>
+                    <a asp-controller="Home" asp-action="Guide" class="btn btn-light mt-3"><i class="bi bi-chevron-right"></i>Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cards -->
+    <section class="p-5" style="border-bottom: 3px solid black;">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md">
+                    <div class="card h-100 bg-dark text-light">
+                        <div class="card-body d-flex flex-column text-center">
+                            <i class="h1 mb-3 bi bi-shield-fill-check"></i>
+                            <h3 class="card-title">
+                                View Other Characters
+                            </h3>
+                            <p class="card-text">
+                                View and search through all public user-created characters.
+                            </p>
+                            <a asp-controller="Character" asp-action="Index" class="mt-auto btn btn-danger">View Now</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md">
+                    <div class="card h-100 bg-dark text-light">
+                        <div class="card-body d-flex flex-column text-center">
+                            <i class="h1 mb-3 bi bi-shield-lock-fill"></i>
+                            <h3 class="card-title">
+                                Register an Account
+                            </h3>
+                            <p class="card-text">
+                                While any user can create and view characters, only those with a registered account may save their characters and edit them later.
+                            </p>
+                            <a asp-controller="User" asp-action="Register" class="mt-auto btn btn-danger">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md">
+                    <div class="card h-100 bg-dark text-light">
+                        <div class="card-body d-flex flex-column text-center">
+                            <i class="h1 mb-3 bi bi-shield-fill-exclamation"></i>
+                            <h3 class="card-title">
+                                About
+                            </h3>
+                            <p class="card-text">
+                                Learn more about the purpose of the D&amp;D CMS as well as the underlying code used to create it.
+                            </p>
+                            <a asp-controller="Home" asp-action="About" class="mt-auto btn btn-danger">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

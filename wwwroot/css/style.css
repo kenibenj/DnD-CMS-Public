@@ -1,0 +1,169 @@
+/* CSS for dnd.kenibenj.com
+    As the site primarily uses bootstrap there wasn't a whole lot of custom CSS needed.
+    Not to mention issues with conflicting cascading styles meant that some of the custom CSS is inline or internal.
+    Below is only the external custom CSS
+*/
+
+:root {
+    --danger: #dc3545;
+}
+
+body::before{
+    display: block;
+    content: '';
+    height: 60px;
+}
+
+body{
+    min-height: 100%;
+}
+
+.nav-custom {
+    color: white;
+    transition: .15s;
+}
+
+.nav-custom:hover{
+    opacity: 50%;
+}
+
+.loader {
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 1000%;
+    height: 1000%;
+    background: white;
+}
+
+/* circle made for the character level indicator*/
+.numberCircle {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+    background: #fff;
+    border: 2px solid #ff4444;
+    color: black;
+    text-align: center;
+    font: 14px Arial, sans-serif;
+    float: right;
+}
+
+
+/* These three classes are used whenever the background CMS logo is used. */
+.characterCard {
+    background-image: url(../images/cardTextureThree.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+}
+
+.aboutBackground {
+    background-image: url(../images/cardTextureThree.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
+    background-position-x: center;
+    min-height: 100vh;
+}
+
+.createBackground {
+    background-image: url(../images/cardTextureThree.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: center;
+    min-height: 100vh;
+}
+
+
+
+.stats{
+    width: 40%;
+}
+
+.stats h1{
+    font-size: clamp(28px, 2vw, 40px);
+}
+
+.stats h6{
+    font-size: clamp(12px, .6vw, 18px);
+}
+
+.desciption hr{
+    margin-top: -2%;
+    color: black;
+}
+
+.selection {
+    transition: .15s;
+}
+
+.selection:hover{
+    transform: translate(0, -10px);
+}
+
+/* Utility class used whenever an element needs to vanish from the user's visibility */
+.invisible{
+    display: none;
+}
+
+/* Following classes give styling to the image upload feature on the edit screen*/
+.image-upload > input {
+    display: none;
+}
+
+.image-upload img {
+    cursor: pointer;
+
+}
+
+.default-cursor {
+    cursor: default;
+}
+
+
+/* Highlights editable attributes when allow edits is toggled on in the edit screen */
+.editable {
+    background-color: rgb(220, 53, 69, .07);
+}
+
+
+/* Code to modify Bootstrap's default switch toggle as they are blue and don't allow for their color to be changed.
+    The following CSS allos for red switches that follow the site's theme colors.
+*/
+.form-switch .form-check-input:focus:not(:checked) {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%28220, 53, 69, .7%29'/%3e%3c/svg%3e");
+}
+
+.form-switch .form-check-input:focus {
+    border-color: rgba(0, 0, 0, 0.25);
+    outline: 0;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    color: black;
+}
+
+.form-switch .form-check-input:checked {
+    border: none;
+    background-color: rgb(220, 53, 69);
+}
+
+
+/* Used to allow for the password visibility button on the login/register screens*/
+#showEye,
+#hideEye{
+    font-size: 100%;
+}
+
+.login {
+    color: #dc3545;
+    text-decoration: none;
+}
+
+.login:hover {
+    opacity: 80%;
+    color: #dc3545;
+}

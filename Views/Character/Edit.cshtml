@@ -1,0 +1,389 @@
+﻿@model DnD_CMS.Models.characterModel
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+		// Function for dynamically changing character image when image is changed
+        fileInput.onchange = evt => {
+        const [file] = fileInput.files
+        if (file) {
+            imgImage.src = URL.createObjectURL(file)
+            }
+        }
+
+		// Function that allows user to click on character image to change the image
+        $("#file").prop("files",$("#fileInput").prop("files"));
+        $(".image-upload").change(function(){
+            $("#file").prop("files",$("#fileInput").prop("files"));
+        });
+
+		// Functions that dynamically changed features on the character card as their respective input boxes are adjusted by the user
+        $("#characterName").keyup(function(){
+            var temp = $("#characterName").text()
+            document.getElementById('fillName').value = temp;
+        });
+        $("#characterRace").keyup(function(){
+            var temp = $("#characterRace").text()
+            document.getElementById('fillRace').value = temp;
+        });
+        $("#characterClassOrType").keyup(function(){ 
+            var temp = $("#characterClassOrType").text()
+            document.getElementById('fillClassOrType').value = temp;
+
+        });
+        $("#characterSubClass").keyup(function(){
+            var temp = $("#characterSubClass").text()
+            document.getElementById('fillSubClass').value = temp;
+        });
+        $("#characterDescription").keyup(function(){
+            var temp = $("#characterDescription").text()
+            document.getElementById('fillDescription').value = temp;
+        });
+        $("#characterSkills").keyup(function(){
+            var temp = $("#characterSkills").text()
+            document.getElementById('fillSkills').value = temp;
+        });
+        $("#characterSTR").keyup(function(){
+            var temp = $("#characterSTR").text()
+            document.getElementById('fillSTR').value = temp;
+        });
+        $("#characterDEX").keyup(function(){
+            var temp = $("#characterDEX").text()
+            document.getElementById('fillDEX').value = temp;
+        });
+        $("#characterCON").keyup(function(){
+            var temp = $("#characterCON").text()
+            document.getElementById('fillCON').value = temp;
+        });
+        $("#characterINT").keyup(function(){
+            var temp = $("#characterINT").text()
+            document.getElementById('fillINT').value = temp;
+        });
+        $("#characterWIS").keyup(function(){
+            var temp = $("#characterWIS").text()
+            document.getElementById('fillWIS').value = temp;
+        });
+        $("#characterCHA").keyup(function(){
+            var temp = $("#characterCHA").text()
+            document.getElementById('fillCHA').value = temp;
+        });
+        $("#characterLevel").keyup(function(){
+            var temp = $("#characterLevel").text()
+            document.getElementById('fillLevel').value = temp;
+        });
+        $("#characterInitiative").keyup(function(){
+            var temp = $("#characterInitiative").text()
+            document.getElementById('fillInitiative').value = temp;
+        });
+        $("#characterSpeed").keyup(function(){
+            var temp = $("#characterSpeed").text()
+            document.getElementById('fillSpeed').value = temp;
+        });
+        $("#characterAC").keyup(function(){
+            var temp = $("#characterAC").text()
+            document.getElementById('fillAC').value = temp;
+        });
+        $("#characterHP").keyup(function(){
+            var temp = $("#characterHP").text()
+            document.getElementById('fillHP').value = temp;
+        });
+        $("#characterIsPublic").keyup(function(){
+            var temp = $("#characterIsPublic").text()
+            document.getElementById('fillIsPublic').value = temp;
+        });
+
+        $('#checkEdit').change(function(){
+            $(".contentEditable").each(function (){
+                if($('#checkEdit').is(':checked')){
+                    $(this).addClass("editable");
+                    $(this).attr('contenteditable', 'true');
+                    $("#fileInput").removeAttr('disabled');
+                }
+                else{
+                    $(this).removeClass("editable");
+                    $(this).attr('contenteditable', 'false');
+                    $("#fileInput").attr('disabled', 'disabled');
+                }
+            });
+        });
+
+		// Function for regulating if character is public or not from the isPublic switch
+        // Switch is defaulted to whatever character's current publicity was when document is first loaded.
+		var isPublic = @Model.characterIsPublic;
+		if (isPublic == 1){
+			$('#checkPublic').prop('checked',true);
+		}
+		else{
+			$('#checkPublic').prop('checked',false);
+		}
+		$('#checkPublic').change(function(){
+			if($('#checkPublic').is(':checked')){
+				var temp = 1
+				document.getElementById('fillIsPublic').value = temp;
+            }
+            else{
+                var temp = 0
+				document.getElementById('fillIsPublic').value = temp;
+            }
+		});
+	});
+</script>
+
+<div class="p-5 min-vh-100 createBackground mx-3">
+    @{
+		var imagePath = "/" + Model.characterImage;
+		var currentImage = imagePath;
+		ViewData["Title"] = "Edit";
+		var h1Title = @Model.characterName + "'s Character Card";
+	}
+
+	<h1>@h1Title</h1>
+	@if (TempData["ErrorMessage"] != null)
+	{
+			<div class="alert alert-info">
+				<strong>Information: </strong>
+			@TempData["ErrorMessage"]
+			</div>
+	}
+
+	@using Microsoft.AspNetCore.Http
+    @inject IHttpContextAccessor Accessor
+
+	@*If session user isn't character's respective user then the user is not allowed to edit, delete, or change publicity of character.*@
+	@if (Accessor.HttpContext.Session.GetString(SessionVariables.SessionKeyUser) == Model.characterUser || Accessor.HttpContext.Session.GetString(SessionVariables.SessionKeyUser) == "admin"){
+		<h4 class="lead">Looks like this one is one of yours! Here you can view and edit the stats for this character. <br />You can also modify the character's privacy setting or delete the character entirely.</h4>
+		<hr />
+		<div class="d-flex gap-5">
+			<div class="form-check form-switch">
+				<input class="form-check-input" type="checkbox" id="checkEdit" >
+				<label class="form-check-label" for="checkEdit">Allow Edits</label>
+			</div>
+			<div class="form-check form-switch">
+				<input class="form-check-input" type="checkbox" id="checkPublic">
+				<label class="form-check-label" for="checkPublic">Make Character Public</label>
+			</div>
+		</div>
+	}
+	else{
+		<h4 class="lead">Here you can view this character's stats in isolation.<br />Is this character one of yours? You can edit it by <a asp-controller="User" asp-action="Login" style="color:black; text-underline-offset: 6%">logging into</a> this card's account.</h4>
+		<hr />
+	}
+
+	<!-- Character Card -->
+	<div class="col-md-5 col-lg-3 searchName mb-3" style="min-width: 400px; max-width: 500px;">
+		<div class="card characterCard h-100">
+			<div class="p-4 d-flex pb-1 gap-4">
+				<div class="d-flex justify-content-between pr-5 ">
+					<div class="image-upload">
+						<label id="imageLabel" for="fileInput">
+							<img id="imgImage" src=@currentImage alt="character Image" class="border border-3 border-dark rounded-circle default-cursor" width="100" height="100" onerror="this.onerror=null; this.src='/images/characters/default.png'"/>
+							<input type="file" id="fileInput" name ="files" class="form-control" accept="image/*" style="display:none" disabled/>
+						</label>
+					</div>
+					<div contenteditable="false" class="numberCircle float-right contentEditable" id="characterLevel">@Model.characterLevel</div>
+				</div>
+				<div>
+					<h3 contenteditable="false" id="characterName" class="contentEditable"><b><i>@Model.characterName</i></b></h3>
+					<div class="d-flex ">
+						<h4 contenteditable="false" class="mx-lg-1 contentEditable" id="characterRace">@Model.characterRace</h4>
+						<h4 class="mx-lg-1 text-danger"> &bull; </h4>
+						<h4 contenteditable="false" class="mx-lg-1 contentEditable" id="characterClassOrType">@Model.characterClassOrType</h4>
+					</div>
+				</div>
+			</div>
+			<hr class="mb-3 mt-1"/>
+			<div class="container">
+				<div class="row">
+					<div class="col-4">
+						<div class="d-flex justify-content-between">
+							<img width="40" src="/images/strengthIcon.svg" title="Strength Stat" />
+							<h2 contenteditable="false" class="font-light contentEditable" id="characterSTR">@Model.characterSTR</h2>
+						</div>
+						<div class="d-flex justify-content-between">
+							<img width="40" src="/images/dexterityIcon.svg" title="Dexterity Stat" />
+							<h2 contenteditable="false" class="font-light contentEditable" id="characterDEX">@Model.characterDEX</h2>
+						</div>
+						<div class="d-flex justify-content-between">
+							<img width="40" src="/images/constitutionIcon.svg" title="Constitution Stat" />
+							<h2 contenteditable="false" class="font-light contentEditable" id="characterCON">@Model.characterCON</h2>
+						</div>
+						<div class="d-flex justify-content-between">
+							<img width="40" src="/images/intelligenceIcon.svg" title="Intelligence Stat" />
+							<h2 contenteditable="false" class="font-light contentEditable" id="characterINT">@Model.characterINT</h2>
+						</div>
+						<div class="d-flex justify-content-between">
+							<img width="40" src="/images/wisdomIcon.svg" title="Wisdom Stat" />
+							<h2 contenteditable="false" class="font-light contentEditable" id="characterWIS">@Model.characterWIS</h2>
+						</div>
+						<div class="d-flex justify-content-between">
+							<img width="40" src="/images/charismaIcon.svg" title="Charisma Stat" />
+							<h2 contenteditable="false" class="font-light contentEditable" id="characterCHA">@Model.characterCHA</h2>
+						</div>
+					</div>
+
+					<div class="col-8">
+						<div class="d-flex justify-content-around">
+							<div class="border border-3 border-danger rounded text-center p-1 stats">
+								<h1 contenteditable="false" id="characterInitiative" class="contentEditable">@Model.characterInitiative</h1>
+								<h6 class="text-danger">Initiative</h6>
+							</div>
+							<div class="border border-3 border-danger rounded text-center p-1 stats">
+								<h1 contenteditable="false" id="characterHP" class="contentEditable">@Model.characterHP</h1>
+								<h6 class="text-danger">Hit Points</h6>
+							</div>
+						</div>
+						<div class="d-flex justify-content-around  mt-2">
+							<div class="border border-3 border-danger rounded text-center p-1 stats">
+								<h1 contenteditable="false" id="characterAC" class="contentEditable">@Model.characterAC</h1>
+								<h6 class="text-danger">AC</h6>
+							</div>
+							<div class="border border-3 border-danger rounded text-center p-1 stats">
+								<h1 contenteditable= "false" id="characterSpeed" class="contentEditable">@Model.characterSpeed</h1>
+								<h6 class="text-danger">Speed</h6>
+							</div>
+						</div>
+						<div class="mt-2">
+							<h5><u>Skills:</u></h5>
+							<h6 contenteditable="false" id="characterSkills" class="contentEditable">@Model.characterSkills</h6>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card-body desciption">
+				<hr />
+				<h5 class="font-medium">Description</h5>
+				<p class="aboutscroll contentEditable" id="characterDescription" contenteditable="false">@Model.characterDescription</p>
+				<span style="font-size: 13px; position: absolute; bottom: 2%; color: grey; left: 50%; transform: translateX(-50%);"class="text-center ">
+					@Model.characterUser
+				</span>
+			</div>
+		</div>
+	</div>
+	<div class="d-flex gap-5">
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+		@using Microsoft.AspNetCore.Http
+		@inject IHttpContextAccessor Accessor
+
+		@*If session user isn't character's respective user then the user is not allowed to edit, delete, or change publicity of character.*@
+		@if (Accessor.HttpContext.Session.GetString(SessionVariables.SessionKeyUser) == Model.characterUser || Accessor.HttpContext.Session.GetString(SessionVariables.SessionKeyUser) == "admin")
+		{
+			<form asp-action="Edit" method="post" enctype="multipart/form-data">
+				<div class="form-group" style="display:none">
+					<label asp-for="characterID" class="control-label" ></label>
+					<input asp-for="characterID" class="form-control"/>
+					<span asp-validation-for="characterID" class="text-danger"></span>
+
+					<label asp-for="characterImage" class="control-label"></label>
+					<input asp-for="characterImage" class="form-control" />
+					<span asp-validation-for="characterImage" class="text-danger"></span>
+
+					<label asp-for="characterName" class="control-label"></label>
+					<input asp-for="characterName" class="form-control" id="fillName"/>
+					<span asp-validation-for="characterName" class="text-danger" ></span>
+
+					<label asp-for="characterName" class="control-label"></label>
+					<input asp-for="characterName" class="form-control" id="fillName"/>
+					<span asp-validation-for="characterName" class="text-danger" ></span>
+
+					<label asp-for="characterRace" class="control-label"></label>
+					<input asp-for="characterRace" class="form-control" id="fillRace"/>
+					<span asp-validation-for="characterRace" class="text-danger"></span>
+
+					<label asp-for="characterClassOrType" class="control-label"></label>
+					<input asp-for="characterClassOrType" class="form-control" id="fillClassOrType"/>
+					<span asp-validation-for="characterClassOrType" class="text-danger"></span>
+
+					<label asp-for="characterSubClass" class="control-label"></label>
+					<input asp-for="characterSubClass" class="form-control" id="fillSubClass"/>
+					<span asp-validation-for="characterSubClass" class="text-danger"></span>
+
+					<label asp-for="characterDescription" class="control-label"></label>
+					<input asp-for="characterDescription" class="form-control" id="fillDescription"/>
+					<span asp-validation-for="characterDescription" class="text-danger"></span>
+
+					<label asp-for="characterSkills" class="control-label"></label>
+					<input asp-for="characterSkills" class="form-control" id="fillSkills"/>
+					<span asp-validation-for="characterSkills" class="text-danger"></span>
+
+					<label asp-for="characterImage" class="control-label"></label>
+					<input type="file" id="file" name ="files" class="form-control" accept="image/*"/>
+
+						<label asp-for="characterSTR" class="control-label"></label>
+					<input asp-for="characterSTR" class="form-control" id="fillSTR"/>
+					<span asp-validation-for="characterSTR" class="text-danger"></span>
+
+					<label asp-for="characterDEX" class="control-label"></label>
+					<input asp-for="characterDEX" class="form-control" id="fillDEX"/>
+					<span asp-validation-for="characterDEX" class="text-danger"></span>
+
+					<label asp-for="characterCON" class="control-label"></label>
+					<input asp-for="characterCON" class="form-control" id="fillCON"/>
+					<span asp-validation-for="characterCON" class="text-danger"></span>
+
+					<label asp-for="characterINT" class="control-label"></label>
+					<input asp-for="characterINT" class="form-control" id="fillINT"/>
+					<span asp-validation-for="characterINT" class="text-danger"></span>
+
+					<label asp-for="characterWIS" class="control-label"></label>
+					<input asp-for="characterWIS" class="form-control" id="fillWIS"/>
+					<span asp-validation-for="characterWIS" class="text-danger"></span>
+
+					<label asp-for="characterCHA" class="control-label"></label>
+					<input asp-for="characterCHA" class="form-control" id="fillCHA"/>
+					<span asp-validation-for="characterCHA" class="text-danger"></span>
+
+					<label asp-for="characterLevel" class="control-label"></label>
+					<input asp-for="characterLevel" class="form-control" id="fillLevel"/>
+					<span asp-validation-for="characterLevel" class="text-danger"></span>
+
+					<label asp-for="characterInitiative" class="control-label"></label>
+					<input asp-for="characterInitiative" class="form-control" id="fillInitiative"/>
+					<span asp-validation-for="characterInitiative" class="text-danger"></span>
+
+					<label asp-for="characterSpeed" class="control-label"></label>
+					<input asp-for="characterSpeed" class="form-control" id="fillSpeed"/>
+					<span asp-validation-for="characterSpeed" class="text-danger"></span>
+
+					<label asp-for="characterAC" class="control-label"></label>
+					<input asp-for="characterAC" class="form-control" id="fillAC"/>
+					<span asp-validation-for="characterAC" class="text-danger"></span>
+
+					<label asp-for="characterHP" class="control-label"></label>
+					<input asp-for="characterHP" class="form-control" id="fillHP"/>
+					<span asp-validation-for="characterHP" class="text-danger"></span>
+
+					<label asp-for="characterIsPublic" class="control-label"></label>
+					<input asp-for="characterIsPublic" class="form-control" id="fillIsPublic"/>
+					<span asp-validation-for="characterIsPublic" class="text-danger"></span>
+
+					<label asp-for="characterUser" class="control-label"></label>
+					<input asp-for="characterUser" class="form-control" id="fillUser"/>
+					<span asp-validation-for="characterUser" class="text-danger"></span>
+				</div>
+			<div class="form-group">
+				<input type="submit" value="Save" class="btn btn-danger">
+			</div>
+			</form>
+			}
+			@using Microsoft.AspNetCore.Http
+			@inject IHttpContextAccessor Accessor
+
+			@*If session user isn't character's respective user then the user is not allowed to edit, delete, or change publicity of character.*@
+			@if (Accessor.HttpContext.Session.GetString(SessionVariables.SessionKeyUser) == Model.characterUser || Accessor.HttpContext.Session.GetString(SessionVariables.SessionKeyUser) == "admin")
+			{
+			<form asp-action="Delete"  asp-route-id="@Model.characterID">
+				<div class="form-group">
+					<input type="submit" value="Delete" class="btn btn-dark" />
+				</div>
+			</form>
+			}
+		</div>
+	</div>
+</div
+
+@section Scripts {
+@{
+await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

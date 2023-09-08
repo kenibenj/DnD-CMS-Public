@@ -1,0 +1,133 @@
+﻿@model DnD_CMS.Models.userModel
+<script type="text/javascript">
+
+  //Function that controls the visibility button that reveals the password
+  function password_show_hide() {
+      var x = document.getElementById("password");
+      var show_eye = document.getElementById("showEye");
+      var hide_eye = document.getElementById("hideEye");
+      hide_eye.classList.remove("d-none");
+      if (x.type === "password") {
+        x.type = "text";
+        show_eye.style.display = "none";
+        hide_eye.style.display = "block";
+      } else {
+        x.type = "password";
+        show_eye.style.display = "block";
+        hide_eye.style.display = "none";
+      }
+  }
+</script>
+@{
+    //Specific Error occurs when user chooses name that has been chosen before. If user recieves this error they are told that they need to choose another username
+    ViewData["Title"] = "Register";
+    string takenUsernameMessage = "Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 0, current count = 1.";
+    var errorMessage = (string) TempData["ErrorMessage"];
+}
+
+<div class="p-5 createBackground " style="min-height: 100vh">
+
+@if (errorMessage != null && errorMessage != takenUsernameMessage)
+{
+    <div class="alert alert-danger">
+        <strong>Information: </strong> @TempData["ErrorMessage"]
+    </div>
+}
+else if (errorMessage == takenUsernameMessage){
+    <div class="alert alert-danger">
+        <strong>Information: </strong> Username already taken!
+    </div>    
+}
+
+    <div class="card h-100 bg-dark text-light mx-auto align-middle mt-5" style="width: 22%; min-width:330px">
+        <div class="card-body flex-column text-center ">
+            <i class="h1 mb-3 bi bi-shield-lock-fill"></i>
+            <h3 class="card-title">Register an Account</h3>
+            <hr />
+            <form asp-action="Register" class="form-group">
+                <div asp-validation-summary="ModelOnly" ></div>
+                <div class="gap-5 form-group">
+                    <div class="form-group my-4">
+                        <input asp-for="userName" placeholder="Username" class="form-control" />
+                        <span asp-validation-for="userName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group d-flex mb-4">
+                        <input type="password" asp-for="userPassword" id="password" placeholder="Password" class="form-control border-right">
+                        <span asp-validation-for="userPassword" class="text-danger"></span>
+                          <div class="input-group-append">
+                            <span class="input-group-text" onclick="password_show_hide();">
+                              <i class="bi bi-eye" id="showEye"></i>
+                              <i class="bi bi-eye-slash d-none" id="hideEye"></i>
+                            </span>
+                          </div>
+                    </div>
+                    <div class="form-group mb-2">
+                        <input type="submit" value="Register" class="btn btn-danger" />
+                    </div>
+                </div>
+            </form>
+            <p class="card-text ">
+                Already have an account? <a asp-action="Login" class="login">Sign in</a>
+            </p>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+ <!-- CSS for input boxes and input sliders in order to make them red themed -->
+<style>
+    .slidecontainer {
+      width: 100%;
+    }
+
+    .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 13px;
+      border-radius: 5px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+
+    .slider:hover {
+      opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #dc3545;
+      cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #dc3545;
+      cursor: pointer;
+    }
+
+.form-control:focus {
+        border-color: #DC3545;
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 7px rgba(220,53,69,0.9);
+}
+
+.login {
+    color: #dc3545;
+    text-decoration: none;
+}
+
+.login:hover{
+    opacity: 80%;
+    color: #dc3545;
+}
+</style>

@@ -1,0 +1,736 @@
+﻿@model DnD_CMS.Models.characterModel
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        // Function for dynamically changing character image when image is changed
+        fileInput.onchange = evt => {
+        const [file] = fileInput.files
+        if (file) {
+            imgImage.src = URL.createObjectURL(file)
+            }
+        }
+
+        // Following function are for dynamically changing character skills when switches are toggled. 
+        // These could be reformatted into a single function but for now this will serve
+
+        //Athletics
+        $('#checkAthletics').change(function(){
+            var temp = $('.characterSkills').text()
+            if($('#checkAthletics').is(':checked')){
+                temp = temp + "Athletics, ";
+                temp = temp.replace("None", "");
+            }
+            else{
+                temp = temp.replace("Athletics, ", "");
+            }
+            $('.characterSkills').text(temp);
+        });
+
+        //Acrobatics
+        $('#checkAcrobatics').change(function(){
+            var temp = $('.characterSkills').text()
+            if($('#checkAcrobatics').is(':checked')){
+                temp = temp + "Acrobatics, ";
+                temp = temp.replace("None", "");
+            }
+            else{
+                temp = temp.replace("Acrobatics, ", "");
+            }
+            $('.characterSkills').text(temp);
+        });
+
+        //Stealth
+        $('#checkStealth').change(function(){
+            var temp = $('.characterSkills').text()
+            if($('#checkStealth').is(':checked')){
+                temp = temp + "Stealth, ";
+                temp = temp.replace("None", "");
+            }
+            else{
+                temp = temp.replace("Stealth, ", "");
+            }
+            $('.characterSkills').text(temp);
+        });
+
+        //History
+        $('#checkHistory').change(function(){
+            var temp = $('.characterSkills').text()
+            if($('#checkHistory').is(':checked')){
+                temp = temp + "History, ";
+                temp = temp.replace("None", "");
+            }
+            else{
+                temp = temp.replace("History, ", "");
+            }
+            $('.characterSkills').text(temp);
+        });
+
+        //Performance
+        $('#checkPerformance').change(function(){
+            var temp = $('.characterSkills').text()
+            if($('#checkPerformance').is(':checked')){
+                temp = temp + "Performance, ";
+                temp = temp.replace("None", "");
+            }
+            else{
+                temp = temp.replace("Performance, ", "");
+            }
+            $('.characterSkills').text(temp);
+        });
+
+        //Persuasion
+        $('#checkPersuasion').change(function(){
+            var temp = $('.characterSkills').text()
+            if($('#checkPersuasion').is(':checked')){
+                temp = temp + "Persuasion, ";
+                temp = temp.replace("None", "");
+            }
+            else{
+                temp = temp.replace("Persuasion, ", "");
+            }
+            $('.characterSkills').text(temp);
+        });
+
+        //Investigation
+        $('#checkInvestigation').change(function(){
+            var temp = $('.characterSkills').text()
+            if($('#checkInvestigation').is(':checked')){
+                temp = temp + "Investigation, ";
+                temp = temp.replace("None", "");
+            }
+            else{
+                temp = temp.replace("Investigation, ", "");
+            }
+            $('.characterSkills').text(temp);
+        });
+
+        //Nature
+        $('#checkNature').change(function(){
+            var temp = $('.characterSkills').text()
+            if($('#checkNature').is(':checked')){
+                temp = temp + "Nature, ";
+                temp = temp.replace("None", "");
+            }
+            else{
+                temp = temp.replace("Nature, ", "");
+            }
+            $('.characterSkills').text(temp);
+        });
+
+        //Religion
+        $('#checkReligion').change(function(){
+            var temp = $('.characterSkills').text()
+            if($('#checkReligion').is(':checked')){
+                temp = temp + "Religion, ";
+                temp = temp.replace("None", "");
+            }
+            else{
+                temp = temp.replace("Religion, ", "");
+            }
+            $('.characterSkills').text(temp);
+        });
+
+        //Animal Handling
+        $('#checkAnimalHandling').change(function(){
+            var temp = $('.characterSkills').text()
+            if($('#checkAnimalHandling').is(':checked')){
+                temp = temp + "Animal Handling, ";
+                temp = temp.replace("None", "");
+            }
+            else{
+                temp = temp.replace("Animal Handling, ", "");
+            }
+            $('.characterSkills').text(temp);
+        });
+
+        //Intimidation
+        $('#checkIntimidation').change(function(){
+            var temp = $('.characterSkills').text()
+            if($('#checkIntimidation').is(':checked')){
+                temp = temp + "Intimidation, ";
+                temp = temp.replace("None", "");
+            }
+            else{
+                temp = temp.replace("Intimidation, ", "");
+            }
+            $('.characterSkills').text(temp);
+        });
+
+        //Insight
+        $('#checkInsight').change(function(){
+            var temp = $('.characterSkills').text()
+            if($('#checkInsight').is(':checked')){
+                temp = temp + "Insight, ";
+                temp = temp.replace("None", "");
+            }
+            else{
+                temp = temp.replace("Insight, ", "");
+            }
+            $('.characterSkills').text(temp);
+        });
+
+        //Medicine
+        $('#checkMedicine').change(function(){
+            var temp = $('.characterSkills').text()
+            if($('#checkMedicine').is(':checked')){
+                temp = temp + "Medicine, ";
+                temp = temp.replace("None", "");
+            }
+            else{
+                temp = temp.replace("Medicine, ", "");
+                $('.characterSkills').text(temp);
+            }
+            $('.characterSkills').text(temp);
+        });
+
+        //Perception
+        $('#checkPerception').change(function(){
+            var temp = $('.characterSkills').text()
+            if($('#checkPerception').is(':checked')){
+                temp = temp + "Perception, ";
+                temp = temp.replace("None", "");
+            }
+            else{
+                temp = temp.replace("Perception, ", "");
+            }
+            $('.characterSkills').text(temp);
+        });
+
+        //Survival
+        $('#checkSurvival').change(function(){
+            var temp = $('.characterSkills').text()
+            if($('#checkSurvival').is(':checked')){
+                temp = temp + "Survival, ";
+                temp = temp.replace("None", "");
+            }
+            else{
+                temp = temp.replace("Survival, ", "");
+            }
+            $('.characterSkills').text(temp);
+        });
+
+        //Deception
+        $('#checkDeception').change(function(){
+            var temp = $('.characterSkills').text()
+            if($('#checkDeception').is(':checked')){
+                temp = temp + "Deception, ";
+                temp = temp.replace("None", "");
+            }
+            else{
+                temp = temp.replace("Deception, ", "");
+            }
+            $('.characterSkills').text(temp);
+        });
+
+        //Unique function for allowing users to create their own skill/s
+        // Unique skill/s is dynamically removed, edited, and then readded whenever it is changed by the user
+        var track = "";
+        $("#checkOther").keyup(function(){
+            var temp = $('.characterSkills').text()
+            temp = temp.replace("None", "");
+            temp = temp.replace(track, "");
+            var otherTemp = document.getElementById('checkOther').value;
+            if(otherTemp != ""){
+                otherTemp = otherTemp + ", ";
+            }
+            $('.characterSkills').text(temp + otherTemp);
+            track = otherTemp;
+        });
+
+        // Functions that dynamically changed features on the character card as their respective input boxes are adjusted by the user
+        $("#nameInput").keyup(function(){
+            var temp = document.getElementById('nameInput').value;
+            $('#characterName').text(temp);
+        });
+        $("#raceInput").keyup(function(){
+            var temp = document.getElementById('raceInput').value;
+            $('#characterRace').text(temp);
+        });
+        $("#classInput").keyup(function(){
+            var temp = document.getElementById('classInput').value;
+            $('#characterClassOrType').text(temp);
+        });
+        $("#subClassInput").keyup(function(){
+            var temp = document.getElementById('subClassInput').value;
+            $('#characterSubClass').text(temp);
+        });
+        $("#STRInput").on("input", function(){
+            var temp = document.getElementById('STRInput').value;
+            $('#characterSTR').text(temp);
+        });
+        $("#DEXInput").on("input", function(){
+            var temp = document.getElementById('DEXInput').value;
+            $('#characterDEX').text(temp);
+        });
+        $("#CONInput").on("input", function(){
+            var temp = document.getElementById('CONInput').value;
+            $('#characterCON').text(temp);
+        });
+        $("#WISInput").on("input", function(){
+            var temp = document.getElementById('WISInput').value;
+            $('#characterWIS').text(temp);
+        });
+        $("#INTInput").on("input", function(){
+            var temp = document.getElementById('INTInput').value;
+            $('#characterINT').text(temp);
+        });
+        $("#CHAInput").on("input", function(){
+            var temp = document.getElementById('CHAInput').value;
+            $('#characterCHA').text(temp);
+        });
+
+        $("#levelInput").on("input", function(){
+            var temp = document.getElementById('levelInput').value;
+            $('#characterLevel').text(temp);
+        });
+        $("#initiativeInput").on("input", function(){
+            var temp = document.getElementById('initiativeInput').value;
+            $('#characterInitiative').text(temp);
+        });
+        $("#speedInput").on("input", function(){
+            var temp = document.getElementById('speedInput').value;
+            $('#characterSpeed').text(temp);
+        });
+        $("#ACInput").on("input", function(){
+            var temp = document.getElementById('ACInput').value;
+            $('#characterAC').text(temp);
+        });
+        $("#HPInput").on("input", function(){
+            var temp = document.getElementById('HPInput').value;
+            $('#characterHP').text(temp);
+        });
+        $("#descriptionInput").keyup(function(){
+            var temp = document.getElementById('descriptionInput').value;
+            $('.characterDescription').text(temp);
+        });
+
+        // Function for regulating if character is public or not from the isPublic switch
+        // Sets character to public by default
+        document.getElementById('fillIsPublic').value = 1;
+        $('#checkIsPublic').prop('checked',true);
+        $('#checkIsPublic').change(function(){
+            if($('#checkIsPublic').is(':checked')){
+               document.getElementById('fillIsPublic').value = 1;
+            }
+            else{
+                document.getElementById('fillIsPublic').value = 0;
+            }
+        });
+
+        $('#form').submit(function(){
+            var tempDesc = $('.characterDescription').text();
+            if(tempDesc != ""){
+                document.getElementById('fillDescription').value = tempDesc;
+            }
+            else{
+                document.getElementById('fillDescription').value = "This character is ready for an adventure!";
+            }
+
+            var tempSkills = $('.characterSkills').text();
+            if(tempSkills != ""){
+                tempSkills = tempSkills.replace(/,\s*$/, "");
+                document.getElementById('fillSkills').value = tempSkills;
+            }
+            else{
+                document.getElementById('fillSkills').value = "None";
+            }
+        });
+    });
+</script>
+
+
+<div class="p-5 min-vh-100 mx-3 aboutBackground">
+    @{
+        ViewData["Title"] = "Create";
+        var h1Title = "Create a New Character";
+    }
+
+	<h1>@h1Title</h1>
+	@if (TempData["ErrorMessage"] != null)
+	{
+	    <div class="alert alert-info">
+		    <strong>Information: </strong>
+	        @TempData["ErrorMessage"]
+	    </div>
+	}
+
+	<h4 class="lead">Here you can create your very own D&D Character! <br /></h4>
+	<hr />
+    
+    <!-- HTML forms. Some forms are classed as invisible and then simply receive their values from what appears on the character card.
+        This is due to the controller expecting certain values to come from a single input box.
+    -->
+    <div class="d-flex gap-5">
+            <div class="col-md-4">
+                <form asp-action="create" method="post" enctype="multipart/form-data" id="form">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="characterName" class="control-label">What is the <strong style="color: #dc3545;">name</strong> of your character?</label>
+                        <input asp-for="characterName" class="form-control" id="nameInput"/>
+                        <span asp-validation-for="characterName" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="characterRace" class="control-label">What is the <strong style="color: #dc3545;">race</strong> of your character?</label>
+                        <input asp-for="characterRace" class="form-control" id="raceInput"/>
+                        <span asp-validation-for="characterRace" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="characterClassOrType" class="control-label">What is the <strong style="color: #dc3545;">class</strong> of your character?</label>
+                        <input asp-for="characterClassOrType" class="form-control" id="classInput"/>
+                        <span asp-validation-for="characterClassOrType" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="characterSubClass" class="control-label">What is the <strong style="color: #dc3545;">subclass</strong> of your character? (Optional)</label>
+                        <input asp-for="characterSubClass" class="form-control" id="subClassInput"/>
+                        <span asp-validation-for="characterSubClass" class="text-danger"></span>
+                    </div>
+                    <br />
+					<div class="form-group">
+                        <label asp-for="characterImage" class="control-label">Choose an <strong style="color: #dc3545;">image</strong> for your character (Optional)</label>
+                        <input asp-for="characterImage" type="file" name ="files" class="form-control" id="fileInput" accept="image/*" />
+                        <span asp-validation-for="characterImage" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="characterSkills" class="control-label">What are the <strong style="color: #dc3545;">skills</strong> of your character?</label>
+                        <input asp-for="characterSkills" class="form-control invisible" id="fillSkills" />
+                        <span asp-validation-for="characterSkills" class="text-danger"></span>
+	                        <div class="row g-1">
+		                            <div class="form-check form-switch col-md-6 col-lg-4">
+			                            <input class="form-check-input" type="checkbox" id="checkAthletics" >
+			                            <label class="form-check-label" for="checkEdit">Athletics</label>
+		                            </div>
+		                            <div class="form-check form-switch col-md-6 col-lg-4">
+			                            <input class="form-check-input" type="checkbox" id="checkAcrobatics">
+			                            <label class="form-check-label" for="checkPublic">Acrobatics</label>
+		                            </div>
+                                    <div class="form-check form-switch col-md-6 col-lg-4">
+			                            <input class="form-check-input" type="checkbox" id="checkStealth" >
+			                            <label class="form-check-label" for="checkEdit">Stealth</label>
+		                            </div>
+		                            <div class="form-check form-switch col-md-6 col-lg-4">
+			                            <input class="form-check-input" type="checkbox" id="checkHistory">
+			                            <label class="form-check-label" for="checkPublic">History</label>
+		                            </div>
+                                    <div class="form-check form-switch col-md-6 col-lg-4">
+			                            <input class="form-check-input" type="checkbox" id="checkPerformance">
+			                            <label class="form-check-label" for="checkPublic">Performance</label>
+		                            </div>
+                                    <div class="form-check form-switch col-md-6 col-lg-4">
+			                            <input class="form-check-input" type="checkbox" id="checkPersuasion">
+			                            <label class="form-check-label" for="checkPublic">Persuasion</label>
+		                            </div>
+		                            <div class="form-check form-switch col-md-6 col-lg-4">
+			                            <input class="form-check-input" type="checkbox" id="checkInvestigation" >
+			                            <label class="form-check-label" for="checkEdit">Investigation</label>
+		                            </div>
+		                            <div class="form-check form-switch col-md-6 col-lg-4" >
+			                            <input class="form-check-input" type="checkbox" id="checkNature">
+			                            <label class="form-check-label" for="checkPublic">Nature</label>
+		                            </div>
+                                    <div class="form-check form-switch col-md-6 col-lg-4" >
+			                            <input class="form-check-input" type="checkbox" id="checkReligion" >
+			                            <label class="form-check-label" for="checkEdit">Religion</label>
+		                            </div>
+		                            <div class="form-check form-switch col-md-6 col-lg-4">
+			                            <input class="form-check-input" type="checkbox" id="checkAnimalHandling">
+			                            <label class="form-check-label" for="checkPublic">Animal Handling</label>
+		                            </div>
+                                    <div class="form-check form-switch col-md-6 col-lg-4" >
+			                            <input class="form-check-input" type="checkbox" id="checkIntimidation">
+			                            <label class="form-check-label" for="checkPublic">Intimidation</label>
+		                            </div>
+		                            <div class="form-check form-switch col-md-6 col-lg-4">
+			                            <input class="form-check-input" type="checkbox" id="checkInsight" >
+			                            <label class="form-check-label" for="checkEdit">Insight</label>
+		                            </div>
+		                            <div class="form-check form-switch col-md-6 col-lg-4">
+			                            <input class="form-check-input" type="checkbox" id="checkMedicine">
+			                            <label class="form-check-label" for="checkPublic">Medicine</label>
+		                            </div>
+                                    <div class="form-check form-switch col-md-6 col-lg-4">
+			                            <input class="form-check-input" type="checkbox" id="checkPerception">
+			                            <label class="form-check-label" for="checkPublic">Perception</label>
+		                            </div>
+                                    <div class="form-check form-switch col-md-6 col-lg-4">
+			                            <input class="form-check-input" type="checkbox" id="checkSurvival" >
+			                            <label class="form-check-label" for="checkEdit">Survival</label>
+		                            </div>
+		                            <div class="form-check form-switch col-md-6 col-lg-4">
+			                            <input class="form-check-input" type="checkbox" id="checkDeception">
+			                            <label class="form-check-label" for="checkPublic">Deception</label>
+		                            </div>
+                                    <div class="col-md-8 col-lg-4">
+                                        <input class="form-control"  id="checkOther" placeholder="Other" style="width:100%;">
+                                    </div>
+	                        </div>
+                    </div>
+                    <br />
+
+                    <div class="row g-1">
+                        <div class="form-group col-md-6 col-lg-4">
+                            <label asp-for="characterSTR" class="control-label">What is the <strong style="color: #dc3545;">strength</strong> of your character?</label>
+                            <br />
+                            <div class="slidecontainer">
+                                <input asp-for="characterSTR" type="range" class="slider" min="0" max="20" style="width:100%;" id="STRInput" />
+                            </div>
+                            <span asp-validation-for="characterSTR" class="text-danger"></span>
+                        </div>
+                        <br />
+                        <div class="form-group col-md-6 col-lg-4">
+                            <label asp-for="characterDEX" class="control-label">What is the <strong style="color: #dc3545;">dexterity</strong> of your character?</label>
+                            <div class="slidecontainer">
+                                <input asp-for="characterDEX" type="range" class="slider" min="0" max="20" style="width:100%;" id="DEXInput" />
+                            </div>
+                            <span asp-validation-for="characterDEX" class="text-danger"></span>
+                        </div>
+                        <br />
+                        <div class="form-group col-md-6 col-lg-4">
+                            <label asp-for="characterCON" class="control-label">What is the <strong style="color: #dc3545;">constitution</strong> of your character?</label>
+                            <div class="slidecontainer">
+                                <input asp-for="characterCON" type="range" class="slider" min="0" max="20" style="width:100%;" id="CONInput"/>
+                            </div>
+                            <span asp-validation-for="characterCON" class="text-danger"></span>
+                        </div>
+                        <br />
+                        <div class="form-group col-md-6 col-lg-4">
+                            <label asp-for="characterINT" class="control-label">What is the <strong style="color: #dc3545;">intelligence</strong> of your character?</label>
+                            <div class="slidecontainer">
+                                <input asp-for="characterINT" type="range" class="slider" min="0" max="20" style="width:100%;" id="INTInput"/>
+                             </div>
+                            <span asp-validation-for="characterINT" class="text-danger"></span>
+                        </div>
+                        <br />
+                        <div class="form-group col-md-6 col-lg-4">
+                            <label asp-for="characterWIS" class="control-label">What is the <strong style="color: #dc3545;">wisdom</strong> of your character?</label>
+                        <div class="slidecontainer">
+                            <input asp-for="characterWIS" type="range" class="slider" min="0" max="20" style="width:100%;" id="WISInput"/>
+                        </div>
+                            <span asp-validation-for="characterWIS" class="text-danger"></span>
+                        </div>
+                        <br />
+                        <div class="form-group col-md-6 col-lg-4">
+                            <label asp-for="characterCHA" class="control-label">What is the <strong style="color: #dc3545;">charisma</strong> of your character?</label>
+                            <div class="slidecontainer">
+                                <input asp-for="characterCHA" type="range" class="slider" min="0" max="20" style="width:100%;" id="CHAInput"/>
+                            </div>
+                            <span asp-validation-for="characterCHA" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="characterLevel" class="control-label">What is the <strong style="color: #dc3545;">level</strong> of your character?</label>
+                        <div class="slidecontainer">
+                            <input asp-for="characterLevel" type="range" class="slider" min="0" max="20" style="width:100%;" id="levelInput"/>
+                        </div>
+                        <span asp-validation-for="characterLevel" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="characterInitiative" class="control-label">What is the <strong style="color: #dc3545;">initiative</strong> of your character?</label>
+                        <div class="slidecontainer">
+                            <input asp-for="characterInitiative" type="range" class="slider" min="-10" max="10" style="width:100%;" id="initiativeInput"/>
+                        </div>
+                        <span asp-validation-for="characterInitiative" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="characterSpeed" class="control-label">What is the <strong style="color: #dc3545;">speed</strong> of your character?</label>
+                        <div class="slidecontainer">
+                            <input asp-for="characterSpeed" type="range" class="slider" min="0" max="60" step="5" style="width:100%;" id="speedInput"/>
+                        </div>
+                        <span asp-validation-for="characterSpeed" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="characterAC" class="control-label">What is the <strong style="color: #dc3545;">armor class</strong> of your character?</label>
+                        <div class="slidecontainer">
+                            <input asp-for="characterAC" type="range" class="slider" min="0" max="30" style="width:100%;" id="ACInput"/>
+                        </div>
+                        <span asp-validation-for="characterAC" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="characterHP" class="control-label">What is the <strong style="color: #dc3545;">hit points</strong> of your character?</label>
+                        <div class="slidecontainer">
+                            <input asp-for="characterHP" type="range" class="slider" min="0" max="200" style="width:100%;" id="HPInput"/>
+                        </div>
+                        <span asp-validation-for="characterHP" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label asp-for="characterDescription" class="control-label">What is the <strong style="color: #dc3545;">description</strong> of your character?</label>
+                        <input asp-for="characterDescription" class="form-control invisible" id="fillDescription"/>
+                        <span asp-validation-for="characterDescription" class="text-danger"></span>
+                        <br />
+                        <textarea class="form-control" rows="3" style="width:100%" id="descriptionInput"></textarea>
+                    </div>
+                    <br />
+
+                    <!-- Dependency Injection in order to get session Username -->
+                    @using Microsoft.AspNetCore.Http
+                    @inject IHttpContextAccessor Accessor
+                    <div class="form-group invisible">
+                        <label asp-for="characterUser" class="control-label">What is the <strong style="color: #dc3545;">user's name</strong> of your character?</label>
+                        <input asp-for="characterUser" class="form-control" id="UserInput" value="@Accessor.HttpContext.Session.GetString(SessionVariables.SessionKeyUser)"/>
+                        <span asp-validation-for="characterUser" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="characterIsPublic" class="control-label">Is your character <strong style="color: #dc3545;">public</strong>?</label>
+                        <input asp-for="characterIsPublic" class="form-control invisible" id="fillIsPublic" />
+                        <span asp-validation-for="characterIsPublic" class="text-danger"></span>
+                        <div class="form-check form-switch">
+			                <input class="form-check-input" type="checkbox" id="checkIsPublic">
+			                <label class="form-check-label" for="checkPublic"></label>
+		                 </div>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-danger" />
+                    </div>
+                </form>
+        </div>
+
+        <section >
+
+        <!-- Character card -->
+        <div class=" searchName mb-3" style="position: fixed; min-height: 50px; min-width: 450px; max-width:450px;">
+		    <div class="card characterCard h-100">
+			    <div class="p-4 d-flex pb-1 gap-4">
+				    <div class="d-flex justify-content-between pr-5 ">
+					    <img id="imgImage" alt="character Image" src="Image" class="border border-3 border-dark rounded-circle default-cursor" width="100" height="100" onerror="this.onerror=null; this.src='/images/characters/default.png'"/>
+					    <div contenteditable="false" class="numberCircle float-right contentEditable" id="characterLevel">1</div>
+				    </div>
+				    <div>
+					    <h3 id="characterName" class="contentEditable"><b><i>New Character</i></b></h3>
+					    <div class="d-flex ">
+						    <h4 contenteditable="false" class="mx-lg-1 contentEditable" id="characterRace">Human</h4>
+						    <h4 class="mx-lg-1 text-danger"> &bull; </h4>
+						    <h4 contenteditable="false" class="mx-lg-1 contentEditable" id="characterClassOrType">Commoner</h4>
+					    </div>
+				    </div>
+			    </div>
+			    <hr class="mb-3 mt-1"/>
+			    <div class="container">
+				    <div class="row">
+					    <div class="col-4">
+						    <div class="d-flex justify-content-between">
+							    <img width="40" src="/images/strengthIcon.svg" title="Strength Stat" />
+							    <h2 contenteditable="false" class="font-light contentEditable" id="characterSTR">10</h2>
+						    </div>
+						    <div class="d-flex justify-content-between">
+							    <img width="40" src="/images/dexterityIcon.svg" title="Dexterity Stat" />
+							    <h2 contenteditable="false" class="font-light contentEditable" id="characterDEX">10</h2>
+						    </div>
+						    <div class="d-flex justify-content-between">
+							    <img width="40" src="/images/constitutionIcon.svg" title="Constitution Stat" />
+							    <h2 contenteditable="false" class="font-light contentEditable" id="characterCON">10</h2>
+						    </div>
+						    <div class="d-flex justify-content-between">
+							    <img width="40" src="/images/intelligenceIcon.svg" title="Intelligence Stat" />
+							    <h2 contenteditable="false" class="font-light contentEditable" id="characterINT">10</h2>
+						    </div>
+						    <div class="d-flex justify-content-between">
+							    <img width="40" src="/images/wisdomIcon.svg" title="Wisdom Stat" />
+							    <h2 contenteditable="false" class="font-light contentEditable" id="characterWIS">10</h2>
+						    </div>
+						    <div class="d-flex justify-content-between">
+							    <img width="40" src="/images/charismaIcon.svg" title="Charisma Stat" />
+							    <h2 contenteditable="false" class="font-light contentEditable" id="characterCHA">10</h2>
+						    </div>
+					    </div>
+
+					    <div class="col-8">
+						    <div class="d-flex justify-content-around">
+							    <div class="border border-3 border-danger rounded text-center p-1 stats">
+								    <h1 contenteditable="false" id="characterInitiative" class="contentEditable">0</h1>
+								    <h6 class="text-danger">Initiative</h6>
+							    </div>
+							    <div class="border border-3 border-danger rounded text-center p-1 stats">
+								    <h1 contenteditable="false" id="characterHP" class="contentEditable">4</h1>
+								    <h6 class="text-danger">Hit Points</h6>
+							    </div>
+						    </div>
+						    <div class="d-flex justify-content-around  mt-2">
+							    <div class="border border-3 border-danger rounded text-center p-1 stats">
+								    <h1 contenteditable="false" id="characterAC" class="contentEditable">10</h1>
+								    <h6 class="text-danger">AC</h6>
+							    </div>
+							    <div class="border border-3 border-danger rounded text-center p-1 stats">
+								    <h1 contenteditable= "false" id="characterSpeed" class="contentEditable">30</h1>
+								    <h6 class="text-danger">Speed</h6>
+							    </div>
+						    </div>
+						    <div class="mt-2">
+							    <h5><u>Skills:</u></h5>
+							    <h6 contenteditable="false" id="characterSkills" class="contentEditable characterSkills">None</h6>
+						    </div>
+					    </div>
+				    </div>
+			    </div>
+			    <div class="card-body desciption">
+				    <hr />
+				    <h5 class="font-medium">Description</h5>
+				    <p class="aboutscroll contentEditable characterDescription" contenteditable="false">This character is ready for an adventure!</p>
+                    <span style="font-size: 13px; position: absolute; bottom: 2%; color: grey; left: 50%; transform: translateX(-50%);"class="text-center ">
+                        @Accessor.HttpContext.Session.GetString(SessionVariables.SessionKeyUser)
+                    </span>
+			    </div>
+		    </div>
+	    </div>
+        </section>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<!-- Internal CSS for changing styling of input boxes and input sliders -->
+<style>
+    .slidecontainer {
+      width: 100%;
+    }
+
+    .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 13px;
+      border-radius: 5px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+
+    .slider:hover {
+      opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #dc3545;
+      cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #dc3545;
+      cursor: pointer;
+    }
+
+    .form-control:focus {
+            border-color: #DC3545;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 7px rgba(220,53,69,0.9);
+        }
+</style>

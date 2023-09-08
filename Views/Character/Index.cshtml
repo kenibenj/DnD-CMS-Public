@@ -1,0 +1,153 @@
+﻿@model IEnumerable<DnD_CMS.Models.characterModel>
+
+@{
+    ViewData["Title"] = "View Characters";
+}
+
+    <section class="p-5 bg-danger min-vh-100" style="border-bottom: 3px solid #333;" id="characters">
+        <div class="container ">
+            <h2 class="text-center text-white">All Public Characters</h2>
+            <p class="lead text-center mb-5 text-white">Check these bad boys out!</p>
+            <div class="container  pb-5">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+                        <input type="text" id="search" placeholder="Search" class="form-control rounded" />
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4 justify-content-center">
+
+@* Controller sends all characters from characerDAL to here. This view then iterates through them all and displays all the public ones*@
+@foreach (var item in Model) {
+    if(item.characterIsPublic == 1){
+
+                <!-- Character Card -->
+                <div class="col-md-8 col-lg-4 selection searchName">
+                    <div class="card characterCard h-100">
+                        <a asp-action="Edit" asp-route-id="@item.characterID" class="stretched-link"></a>
+                        <div class="p-4">
+                            <div class="d-flex gap-4">
+                                <div class="">
+                                    <img src=@item.characterImage alt="user" class="border border-3 border-dark rounded-circle" width="100" height="100" onerror="this.onerror=null; this.src='/images/characters/default.png'"/>
+                                    <div class="numberCircle float-right">
+                                        @item.characterLevel
+                                    </div>
+                                </div>
+                                <div class="pl-5">
+                                    <h3 ><b><i>@item.characterName</i></b></h3>
+                                    <div class="d-flex ">
+                                        <h4 class="mx-lg-1">@item.characterRace</h4>
+                                        <h4 class="mx-lg-1 text-danger"> &bull; </h4>
+                                        <h4 class="mx-lg-1">@item.characterClassOrType</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="d-flex justify-content-between">
+                                            <img width="40" src="images/strengthIcon.svg" title="Strength Stat" />
+                                            <h2 class="font-light">@item.characterSTR</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <img width="40" src="images/dexterityIcon.svg" title="Dexterity Stat" />
+                                            <h2 class="font-light">@item.characterDEX</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <img width="40" src="images/constitutionIcon.svg" title="Constitution Stat" />
+                                            <h2 class="font-light">@item.characterCON</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <img width="40" src="images/intelligenceIcon.svg" title="Intelligence Stat" />
+                                            <h2 class="font-light">@item.characterINT</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <img width="40" src="images/wisdomIcon.svg" title="Wisdom Stat" />
+                                            <h2 class="font-light">@item.characterWIS</h2>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <img width="40" src="~/images/charismaIcon.svg" title="Charisma Stat" />
+                                            <h2 class="font-light">@item.characterCHA</h2>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-8">
+                                        <div class="d-flex justify-content-around">
+                                            <div class="border border-3 border-danger rounded text-center p-1 stats">
+                                                <h1>@item.characterInitiative</h1>
+                                                <h6 class="text-danger">Initiative</h6>
+                                            </div>
+                                            <div class="border border-3 border-danger rounded text-center p-1 stats">
+                                                <h1>@item.characterHP</h1>
+                                                <h6 class="text-danger">Hit Points</h6>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-around  mt-2">
+                                            <div class="border border-3 border-danger rounded text-center p-1 stats">
+                                                <h1>@item.characterAC</h1>
+                                                <h6 class="text-danger">AC</h6>
+                                            </div>
+                                            <div class="border border-3 border-danger rounded text-center p-1 stats">
+                                                <h1>@item.characterSpeed</h1>
+                                                <h6 class="text-danger">Speed</h6>
+                                            </div>
+                                        </div>
+                                        <div class="mt-2">
+                                            <h5><u>Skills:</u></h5>
+                                            <h6>@item.characterSkills</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body desciption">
+                                <hr />
+                                <h5 class="font-medium">Description</h5>
+                                <p class="">
+                                    @item.characterDescription
+                                </p>
+                                <span style="font-size: 13px; position: absolute; bottom: 2%; color: grey; left: 50%; transform: translateX(-50%);"class="text-center ">
+                                    @item.characterUser
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    }
+}
+            </div>
+        </div>
+    </section>
+</table>
+
+
+<!-- Function for searching the cards. Works by searching through the entire card div and matching anything it finds to the user input -->
+<script>
+    $(document).ready(function(){
+        function Contains(text_one, text_two){
+            if( text_one.indexOf(text_two) != -1){
+                return true;
+            }
+        }
+        $("#search").keyup(function(){
+            var searchText = $("#search").val().toLowerCase();
+            $(".searchName").each(function (){
+                if(!Contains($(this).text().toLowerCase(), searchText)){
+                    $(this).addClass("invisible");
+                }
+                else{
+                    $(this).removeClass("invisible");
+                }
+            });
+        });
+    });
+</script>
+
+<style>
+.form-control:focus {
+        border-color: #DC3545;
+        box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 7px rgba(17,17,17,0.9);
+    }
+</style>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<DnD_CMS.Models.userModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class=" p-5 createBackground" style="min-height: 100vh">
+    <h1>Index</h1>
+
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor Accessor
+
+@* Controller sends all users from userDAL to here. This view then iterates through them all and displays all of them if session user is admin
+    If user is not an admin, then they will not see an user information.
+*@
+@if (Accessor.HttpContext.Session.GetString(SessionVariables.SessionKeyUser) == "admin"){
+
+    <p>
+        <a class="btn btn-danger" asp-action="Register">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.userID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.userName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.userPassword)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.userID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.userName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.userPassword)
+                </td>
+            </tr>
+    }
+        </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Sorry, this area is for admins only!</p>
+    }
+</div>
